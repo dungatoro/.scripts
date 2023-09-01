@@ -1,0 +1,14 @@
+#!/bin/sh
+
+FILESTOADD=$(gum input --placeholder "src/main.rs")
+
+git add $FILESTOADD
+
+# Pre-populate the input with the type(scope): so that the user may change it
+SUMMARY=$(gum input --placeholder "Summary of this change")
+DESCRIPTION=$(gum write --placeholder "Details of this change (CTRL+D to finish)")
+
+# Commit these changes
+gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION"
+
+git push --set-upstream origin master
