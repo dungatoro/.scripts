@@ -1,0 +1,19 @@
+#!/bin/sh
+
+ACTION=$(gum choose "Remove" "Install" "Update" "List orphans")
+
+if [ "$ACTION" = "Install" ]
+then
+    PKGS=$(gum input --placeholder "vim ripgrep neofetch")
+    sudo pacman -Su "$PKGS"
+elif [ "$ACTION" = "Remove" ]
+then
+    PKGS=$(gum input --placeholder "vim ripgrep neofetch")
+    sudo pacman -R "$PKGS"
+elif [ "$ACTION" = "Update" ]
+then
+    sudo pacman -Syu
+else 
+    pacman -Qtdq
+fi
+
