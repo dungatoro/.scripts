@@ -1,14 +1,14 @@
 #!/bin/sh
 
-FILESTOADD=$(gum input --placeholder "src/main.rs")
+files_to_add=$(gum input --placeholder "src/main.rs")
 
-git add $FILESTOADD
+git add $files_to_add
 
 # Pre-populate the input with the type(scope): so that the user may change it
-SUMMARY=$(gum input --placeholder "Summary of this change")
-DESCRIPTION=$(gum write --placeholder "Details of this change (CTRL+D to finish)")
+summary=$(gum input --placeholder "Summary of this change")
+desc=$(gum write --placeholder "Details of this change (CTRL+D to finish)")
 
 # Commit these changes
-gum confirm "Commit changes?" && git commit -m "$SUMMARY" -m "$DESCRIPTION"
+gum confirm "Commit changes?" && git commit -m "$summary" -m "$desc"
 
 git push -u origin master
