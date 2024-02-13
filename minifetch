@@ -1,0 +1,7 @@
+#! /bin/bash
+pkgs=$(pacman -Q | wc -l)
+host=$(cat /proc/sys/kernel/hostname)
+time=$(uptime -p)
+echo -e " \033[31mhost\e[0m $host"
+echo -e " \033[32mtime\e[0m $time"
+echo -e " \033[34mpkgs\e[0m $pkgs"
